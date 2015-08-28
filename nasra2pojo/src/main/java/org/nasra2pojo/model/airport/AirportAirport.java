@@ -15,6 +15,11 @@ public class AirportAirport extends AirportBase {
 	private String ownership;
 	private String use;
 	private String statusCode;
+	private Double latitudeSeconds;
+	private Character latitudeDeclination;
+	private Double longitudeSeconds;
+	private Character longitudeDeclination;
+	
 	
 	@PositionalField(initialPosition = 28, finalPosition = 31)
 	public String getIdentifier() {
@@ -88,11 +93,54 @@ public class AirportAirport extends AirportBase {
 		this.state = state;
 	}
 	
+	@PositionalField(initialPosition = 539, finalPosition = 549, decorator=DoubleDecorator.class)
+	public Double getLatitudeSeconds() {
+		return latitudeSeconds;
+	}
+	public void setLatitudeSeconds(Double latitudeSeconds) {
+		this.latitudeSeconds = latitudeSeconds;
+	}
+	
+	@PositionalField(initialPosition = 550, finalPosition = 550, decorator=CharacterDecorator.class)
+	public Character getLatitudeDeclination() {
+		return latitudeDeclination;
+	}
+	public void setLatitudeDeclination(Character latitudeDeclination) {
+		this.latitudeDeclination = latitudeDeclination;
+	}
+	
+	@PositionalField(initialPosition = 566, finalPosition = 576, decorator=DoubleDecorator.class)
+	public Double getLongitudeSeconds() {
+		return longitudeSeconds;
+	}
+	public void setLongitudeSeconds(Double longitudeSeconds) {
+		this.longitudeSeconds = longitudeSeconds;
+	}
+	
+	@PositionalField(initialPosition = 577, finalPosition = 577, decorator=CharacterDecorator.class)
+	public Character getLongitudeDeclination() {
+		return longitudeDeclination;
+	}
+	public void setLongitudeDeclination(Character longitudeDeclination) {
+		this.longitudeDeclination = longitudeDeclination;
+	}
+	
+	public Double getLatitude() {
+		return (getLatitudeSeconds() / 3600.0) * (getLatitudeDeclination().equals('N') ? 1 : -1);
+	}
+	
+	public Double getLongitude() {
+		return (getLongitudeSeconds() / 3600.0) * (getLongitudeDeclination().equals('E') ? 1 : -1);
+	}
+	
 	@Override
 	public String toString() {
 		return "AirportAirport [identifier=" + identifier + ", type=" + type + ", region=" + region + ", cityName="
-				+ cityName + ", state="
-						+ state + ", name=" + name + ", ownership=" + ownership + ", use=" + use + ", statusCode=" + statusCode + "]";
+				+ cityName + ", state=" + state + ", name=" + name + ", ownership=" + ownership + ", use=" + use
+				+ ", statusCode=" + statusCode + ", latitudeSeconds=" + latitudeSeconds + ", latitudeDeclination="
+				+ latitudeDeclination + ", longitudeSeconds=" + longitudeSeconds + ", longitudeDeclination="
+				+ longitudeDeclination + ", getLatitude()=" + getLatitude() + ", getLongitude()=" + getLongitude()
+				+ "]";
 	}
-	
+
 }

@@ -1,5 +1,6 @@
 package org.nasra2pojo.model.airport;
 
+import com.github.ffpojo.metadata.DefaultFieldDecorator;
 import com.github.ffpojo.metadata.positional.annotation.PositionalField;
 import com.github.ffpojo.metadata.positional.annotation.PositionalRecord;
 
@@ -26,6 +27,20 @@ public class AirportBase {
 	public void setLandingFacilitySiteNumber(String landingFacilitySiteNumber) {
 		this.landingFacilitySiteNumber = landingFacilitySiteNumber;
 	}
+	
+	public static class DoubleDecorator extends DefaultFieldDecorator {
+        @Override
+        public Object fromString(String str) {
+            return Double.valueOf(str);
+        }
+    }
+	
+	public static class CharacterDecorator extends DefaultFieldDecorator {
+        @Override
+        public Object fromString(String str) {
+            return Character.valueOf(str.charAt(0));
+        }
+    }
 
 	public Class<? extends AirportBase> classType() {
 		switch(getRecordType()) {
