@@ -7,7 +7,7 @@ import com.github.ffpojo.exception.FFPojoException;
 
 public class AirportService {
 
-	protected AirportBase createFromText(String line) throws FFPojoException {
+	public AirportBase createFromText(String line) throws FFPojoException {
 		FFPojoHelper ffpojo = FFPojoHelper.getInstance();
 		AirportBase base = ffpojo.createFromText(AirportBase.class, line);
 		return ffpojo.createFromText(base.classType(), line);
