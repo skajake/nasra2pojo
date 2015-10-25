@@ -11,6 +11,7 @@ public class AirportAirport extends AirportBase {
 	private String region;
 	private String cityName;
 	private String state;
+	private String county;
 	private String name;
 	private String ownership;
 	private String use;
@@ -93,6 +94,14 @@ public class AirportAirport extends AirportBase {
 		this.state = state;
 	}
 	
+	@PositionalField(initialPosition = 71, finalPosition = 91)
+	public String getCounty() {
+		return county;
+	}
+	public void setCounty(String county) {
+		this.county = county;
+	}
+	
 	@PositionalField(initialPosition = 539, finalPosition = 549, decorator=DoubleDecorator.class)
 	public Double getLatitudeSeconds() {
 		return latitudeSeconds;
@@ -132,15 +141,14 @@ public class AirportAirport extends AirportBase {
 	public Double getLongitude() {
 		return (getLongitudeSeconds() / 3600.0) * (getLongitudeDeclination().equals('E') ? 1 : -1);
 	}
-	
 	@Override
 	public String toString() {
 		return "AirportAirport [identifier=" + identifier + ", type=" + type + ", region=" + region + ", cityName="
-				+ cityName + ", state=" + state + ", name=" + name + ", ownership=" + ownership + ", use=" + use
-				+ ", statusCode=" + statusCode + ", latitudeSeconds=" + latitudeSeconds + ", latitudeDeclination="
-				+ latitudeDeclination + ", longitudeSeconds=" + longitudeSeconds + ", longitudeDeclination="
-				+ longitudeDeclination + ", getLatitude()=" + getLatitude() + ", getLongitude()=" + getLongitude()
-				+ "]";
+				+ cityName + ", state=" + state + ", county=" + county + ", name=" + name + ", ownership=" + ownership
+				+ ", use=" + use + ", statusCode=" + statusCode + ", latitudeSeconds=" + latitudeSeconds
+				+ ", latitudeDeclination=" + latitudeDeclination + ", longitudeSeconds=" + longitudeSeconds
+				+ ", longitudeDeclination=" + longitudeDeclination + ", getLatitude()=" + getLatitude()
+				+ ", getLongitude()=" + getLongitude() + "]";
 	}
 
 }
