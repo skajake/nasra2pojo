@@ -1,5 +1,7 @@
 package org.nasra2pojo.model.airport;
 
+import java.util.List;
+
 import com.github.ffpojo.metadata.positional.annotation.PositionalField;
 import com.github.ffpojo.metadata.positional.annotation.PositionalRecord;
 
@@ -20,7 +22,10 @@ public class AirportAirport extends AirportBase {
 	private Character latitudeDeclination;
 	private Double longitudeSeconds;
 	private Character longitudeDeclination;
-	
+	private Boolean towered;
+	private List<String> fuelServices;
+	private String airframeServices;
+	private String powerplantServices;
 	
 	@PositionalField(initialPosition = 28, finalPosition = 31)
 	public String getIdentifier() {
@@ -141,14 +146,48 @@ public class AirportAirport extends AirportBase {
 	public Double getLongitude() {
 		return (getLongitudeSeconds() / 3600.0) * (getLongitudeDeclination().equals('E') ? 1 : -1);
 	}
+	
+	@PositionalField(initialPosition = 981, finalPosition = 981, decorator=BooleanDecorator.class)
+	public Boolean getTowered() {
+		return towered;
+	}
+	public void setTowered(Boolean towered) {
+		this.towered = towered;
+	}
+	
+	@PositionalField(initialPosition = 901, finalPosition = 940, decorator=ArrayDecorator.class)
+	public List<String> getFuelServices() {
+		return fuelServices;
+	}
+	public void setFuelServices(List<String> fuelServices) {
+		this.fuelServices = fuelServices;
+	}
+
+	@PositionalField(initialPosition = 941, finalPosition = 945)
+	public String getAirframeServices() {
+		return airframeServices;
+	}
+	public void setAirframeServices(String airframeServices) {
+		this.airframeServices = airframeServices;
+	}
+	
+	@PositionalField(initialPosition = 946, finalPosition = 950)
+	public String getPowerplantServices() {
+		return powerplantServices;
+	}
+	public void setPowerplantServices(String powerplantServices) {
+		this.powerplantServices = powerplantServices;
+	}
+	
 	@Override
 	public String toString() {
 		return "AirportAirport [identifier=" + identifier + ", type=" + type + ", region=" + region + ", cityName="
 				+ cityName + ", state=" + state + ", county=" + county + ", name=" + name + ", ownership=" + ownership
 				+ ", use=" + use + ", statusCode=" + statusCode + ", latitudeSeconds=" + latitudeSeconds
 				+ ", latitudeDeclination=" + latitudeDeclination + ", longitudeSeconds=" + longitudeSeconds
-				+ ", longitudeDeclination=" + longitudeDeclination + ", getLatitude()=" + getLatitude()
-				+ ", getLongitude()=" + getLongitude() + "]";
+				+ ", longitudeDeclination=" + longitudeDeclination + ", towered=" + towered + ", fuelServices="
+				+ fuelServices + ", airframeServices=" + airframeServices + ", powerplantServices=" + powerplantServices
+				+ ", getLatitude()=" + getLatitude() + ", getLongitude()=" + getLongitude() + "]";
 	}
-
+	
 }
