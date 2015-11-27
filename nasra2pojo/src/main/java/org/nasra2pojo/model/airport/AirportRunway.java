@@ -1,5 +1,7 @@
 package org.nasra2pojo.model.airport;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.github.ffpojo.metadata.positional.annotation.PositionalField;
 import com.github.ffpojo.metadata.positional.annotation.PositionalRecord;
 
@@ -167,6 +169,17 @@ public class AirportRunway extends AirportBase {
 		} else {
 			return null;
 		}
+	}
+	
+	public boolean isRunwayGeographyValid() {
+		return getBaseEndLatitude() != null &&
+				getBaseEndLongitude() != null &&
+				getReciprocalEndLatitude() != null &&
+				getReciprocalEndLongitude() != null;
+	}
+	
+	public boolean isHardSurfaced() {
+		return StringUtils.contains(getCondition(), "CONC") || StringUtils.contains(getCondition(), "ASPH");
 	}
 
 	@Override

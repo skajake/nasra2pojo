@@ -2,12 +2,23 @@ package org.nasra2pojo.model.airport;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.github.ffpojo.metadata.positional.annotation.PositionalField;
 import com.github.ffpojo.metadata.positional.annotation.PositionalRecord;
 
 @PositionalRecord
 public class AirportAirport extends AirportBase {
 
+	public enum FACILITY_TYPE {
+		AIRPORT,
+		BALLOONPORT,
+        SEAPLANE_BASE,
+        GLIDERPORT,
+        HELIPORT,
+        ULTRALIGHT
+	};
+	
 	private String identifier;
 	private String type;
 	private String region;
@@ -177,6 +188,34 @@ public class AirportAirport extends AirportBase {
 	}
 	public void setPowerplantServices(String powerplantServices) {
 		this.powerplantServices = powerplantServices;
+	}
+	
+	public boolean isServiced() {
+		boolean fuelServiced = false;
+		for(String fuelService : getFuelServices()) {
+			if(StringUtils.contains(fuelService, "100LL") || StringUtils.contains(fuelService, "A")) {
+				fuelServiced = true;
+				break;
+			}
+		}
+		return fuelServiced && (!StringUtils.equals(getAirframeServices(), "NONE") || !StringUtils.equals(getPowerplantServices(), "NONE"));
+	}
+	
+	public FACILITY_TYPE getFacilityType() {
+		switch(getType()) {
+			case "BALLOONPORT":
+				return FACILITY_TYPE.BALLOONPORT;
+			case "SEAPLANE BASE":
+				return FACILITY_TYPE.SEAPLANE_BASE;
+			case "GLIDERPORT":
+				return FACILITY_TYPE.GLIDERPORT;
+			case "HELIPORT":
+				return FACILITY_TYPE.HELIPORT;
+			case "ULTRALIGHT":
+				return FACILITY_TYPE.ULTRALIGHT;
+			default:
+				return FACILITY_TYPE.AIRPORT;
+		}
 	}
 	
 	@Override
