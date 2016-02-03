@@ -13,6 +13,10 @@ public class AirportRunway extends AirportBase {
 	private Integer	width;
 	private String condition;
 	private String edgeLightIntensity;
+	private String baseEndIdentifier;
+	private Integer baseEndAlignment;
+	private String reciprocalEndIdentifier;
+	private Integer reciprocalEndAlignment;
 	private Double baseEndLatitudeSeconds;
 	private Character baseEndLatitudeDeclination;
 	private Double baseEndLongitudeSeconds;
@@ -65,6 +69,42 @@ public class AirportRunway extends AirportBase {
 
 	public void setEdgeLightIntensity(String edgeLightIntensity) {
 		this.edgeLightIntensity = edgeLightIntensity;
+	}
+
+	@PositionalField(initialPosition = 66, finalPosition = 68)
+	public String getBaseEndIdentifier() {
+		return baseEndIdentifier;
+	}
+
+	public void setBaseEndIdentifier(String baseEndIdentifier) {
+		this.baseEndIdentifier = baseEndIdentifier;
+	}
+
+	@PositionalField(initialPosition = 69, finalPosition = 71, decorator=IntegerDecorator.class)
+	public Integer getBaseEndAlignment() {
+		return baseEndAlignment;
+	}
+
+	public void setBaseEndAlignment(Integer baseEndAlignment) {
+		this.baseEndAlignment = baseEndAlignment;
+	}
+
+	@PositionalField(initialPosition = 288, finalPosition = 290)
+	public String getReciprocalEndIdentifier() {
+		return reciprocalEndIdentifier;
+	}
+
+	public void setReciprocalEndIdentifier(String reciprocalEndIdentifier) {
+		this.reciprocalEndIdentifier = reciprocalEndIdentifier;
+	}
+
+	@PositionalField(initialPosition = 291, finalPosition = 293, decorator=IntegerDecorator.class)
+	public Integer getReciprocalEndAlignment() {
+		return reciprocalEndAlignment;
+	}
+
+	public void setReciprocalEndAlignment(Integer reciprocalEndAlignment) {
+		this.reciprocalEndAlignment = reciprocalEndAlignment;
 	}
 
 	@PositionalField(initialPosition = 104, finalPosition = 114, decorator=DoubleDecorator.class)
@@ -185,7 +225,9 @@ public class AirportRunway extends AirportBase {
 	@Override
 	public String toString() {
 		return "AirportRunway [runwayIdentifier=" + runwayIdentifier + ", length=" + length + ", width=" + width
-				+ ", condition=" + condition + ", edgeLightIntensity=" + edgeLightIntensity
+				+ ", condition=" + condition + ", edgeLightIntensity=" + edgeLightIntensity + ", baseEndIdentifier="
+				+ baseEndIdentifier + ", baseEndAlignment=" + baseEndAlignment + ", reciprocalEndIdentifier="
+				+ reciprocalEndIdentifier + ", reciprocalEndAlignment=" + reciprocalEndAlignment
 				+ ", baseEndLatitudeSeconds=" + baseEndLatitudeSeconds + ", baseEndLatitudeDeclination="
 				+ baseEndLatitudeDeclination + ", baseEndLongitudeSeconds=" + baseEndLongitudeSeconds
 				+ ", baseEndLongitudeDeclination=" + baseEndLongitudeDeclination + ", reciprocalEndLatitudeSeconds="

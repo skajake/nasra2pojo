@@ -78,7 +78,11 @@ public class AirportBase {
 	public static class IntegerDecorator extends DefaultFieldDecorator {
         @Override
         public Object fromString(String str) {
-            return Integer.valueOf(str);
+        	try {
+        		return Integer.valueOf(str);
+        	} catch(Exception e) {
+        		return null;
+        	}
         }
     }
 
