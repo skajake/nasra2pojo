@@ -2,6 +2,7 @@ package org.nasra2pojo.model.airport;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.github.ffpojo.metadata.DefaultFieldDecorator;
 import com.github.ffpojo.metadata.positional.annotation.PositionalField;
 import com.github.ffpojo.metadata.positional.annotation.PositionalRecord;
 
@@ -11,8 +12,6 @@ public class AirportRunway extends AirportBase {
 	private String runwayIdentifier;
 	private Integer	length;
 	private Integer	width;
-	private String condition;
-	private String edgeLightIntensity;
 	private String baseEndIdentifier;
 	private Integer baseEndAlignment;
 	private String reciprocalEndIdentifier;
@@ -25,6 +24,21 @@ public class AirportRunway extends AirportBase {
 	private Character reciprocalEndLatitudeDeclination;
 	private Double reciprocalEndLongitudeSeconds;
 	private Character reciprocalEndLongitudeDeclination;
+	private String surfaceTypeAndCondition;
+	private String surfaceTreatment;
+	private Boolean baseEndRightHandTrafficPattern;
+	private Boolean reciprocalEndRightHandTrafficPattern; 
+	private Integer runwayLightIntensity;
+	private Integer baseEndVisualGlideIndicator;
+	private Integer baseEndApproachLightSystem;
+	private Boolean baseEndRunwayEndIdentifierLightsAvailable;
+	private Boolean baseEndCenterlineLightsAvailable;
+	private Boolean baseEndRunwayEndIdentifierTouchdownLightsAvailable;
+	private Integer reciprocalEndVisualGlideIndicator;
+	private Integer reciprocalEndApproachLightSystem;
+	private Boolean reciprocalEndRunwayEndIdentifierLightsAvailable;
+	private Boolean reciprocalEndCenterlineLightsAvailable;
+	private Boolean reciprocalEndRunwayEndIdentifierTouchdownLightsAvailable;
 
 	@PositionalField(initialPosition = 17, finalPosition = 23)
 	public String getRunwayIdentifier() {
@@ -51,24 +65,6 @@ public class AirportRunway extends AirportBase {
 
 	public void setWidth(Integer width) {
 		this.width = width;
-	}
-
-	@PositionalField(initialPosition = 33, finalPosition = 44)
-	public String getCondition() {
-		return condition;
-	}
-
-	public void setCondition(String condition) {
-		this.condition = condition;
-	}
-
-	@PositionalField(initialPosition = 61, finalPosition = 65)
-	public String getEdgeLightIntensity() {
-		return edgeLightIntensity;
-	}
-
-	public void setEdgeLightIntensity(String edgeLightIntensity) {
-		this.edgeLightIntensity = edgeLightIntensity;
 	}
 
 	@PositionalField(initialPosition = 66, finalPosition = 68)
@@ -211,6 +207,144 @@ public class AirportRunway extends AirportBase {
 		}
 	}
 	
+	@PositionalField(initialPosition = 33, finalPosition = 44)
+	public String getSurfaceTypeAndCondition() {
+		return surfaceTypeAndCondition;
+	}
+
+	public void setSurfaceTypeAndCondition(String surfaceTypeAndCondition) {
+		this.surfaceTypeAndCondition = surfaceTypeAndCondition;
+	}
+
+	@PositionalField(initialPosition = 45, finalPosition = 49)
+	public String getSurfaceTreatment() {
+		return surfaceTreatment;
+	}
+
+	public void setSurfaceTreatment(String surfaceTreatment) {
+		this.surfaceTreatment = surfaceTreatment;
+	}
+
+	@PositionalField(initialPosition = 82, finalPosition = 82, decorator=BooleanDecorator.class)
+	public Boolean getBaseEndRightHandTrafficPattern() {
+		return baseEndRightHandTrafficPattern;
+	}
+
+	public void setBaseEndRightHandTrafficPattern(Boolean baseEndRightHandTrafficPattern) {
+		this.baseEndRightHandTrafficPattern = baseEndRightHandTrafficPattern;
+	}
+
+	@PositionalField(initialPosition = 304, finalPosition = 304, decorator=BooleanDecorator.class)
+	public Boolean getReciprocalEndRightHandTrafficPattern() {
+		return reciprocalEndRightHandTrafficPattern;
+	}
+
+	public void setReciprocalEndRightHandTrafficPattern(Boolean reciprocalEndRightHandTrafficPattern) {
+		this.reciprocalEndRightHandTrafficPattern = reciprocalEndRightHandTrafficPattern;
+	}
+
+	@PositionalField(initialPosition = 61, finalPosition = 65, decorator=RunwayEdgeLightIntensityDecorator.class)
+	public Integer getRunwayLightIntensity() {
+		return runwayLightIntensity;
+	}
+
+	public void setRunwayLightIntensity(Integer runwayLightIntensity) {
+		this.runwayLightIntensity = runwayLightIntensity;
+	}
+
+	@PositionalField(initialPosition = 229, finalPosition = 233, decorator=VisualGlideSlopIndicatorsDecorator.class)
+	public Integer getBaseEndVisualGlideIndicator() {
+		return baseEndVisualGlideIndicator;
+	}
+
+	public void setBaseEndVisualGlideIndicator(Integer baseEndVisualGlideIndicator) {
+		this.baseEndVisualGlideIndicator = baseEndVisualGlideIndicator;
+	}
+
+	@PositionalField(initialPosition = 238, finalPosition = 245, decorator=ApproachLightSystemDecorator.class)
+	public Integer getBaseEndApproachLightSystem() {
+		return baseEndApproachLightSystem;
+	}
+
+	public void setBaseEndApproachLightSystem(Integer baseEndApproachLightSystem) {
+		this.baseEndApproachLightSystem = baseEndApproachLightSystem;
+	}
+
+	@PositionalField(initialPosition = 246, finalPosition = 246, decorator=BooleanDecorator.class)
+	public Boolean getBaseEndRunwayEndIdentifierLightsAvailable() {
+		return baseEndRunwayEndIdentifierLightsAvailable;
+	}
+
+	public void setBaseEndRunwayEndIdentifierLightsAvailable(Boolean baseEndRunwayEndIdentifierLightsAvailable) {
+		this.baseEndRunwayEndIdentifierLightsAvailable = baseEndRunwayEndIdentifierLightsAvailable;
+	}
+
+	@PositionalField(initialPosition = 247, finalPosition = 247, decorator=BooleanDecorator.class)
+	public Boolean getBaseEndCenterlineLightsAvailable() {
+		return baseEndCenterlineLightsAvailable;
+	}
+
+	public void setBaseEndCenterlineLightsAvailable(Boolean baseEndCenterlineLightsAvailable) {
+		this.baseEndCenterlineLightsAvailable = baseEndCenterlineLightsAvailable;
+	}
+
+	@PositionalField(initialPosition = 248, finalPosition = 248, decorator=BooleanDecorator.class)
+	public Boolean getBaseEndRunwayEndIdentifierTouchdownLightsAvailable() {
+		return baseEndRunwayEndIdentifierTouchdownLightsAvailable;
+	}
+
+	public void setBaseEndRunwayEndIdentifierTouchdownLightsAvailable(
+			Boolean baseEndRunwayEndIdentifierTouchdownLightsAvailable) {
+		this.baseEndRunwayEndIdentifierTouchdownLightsAvailable = baseEndRunwayEndIdentifierTouchdownLightsAvailable;
+	}
+
+	@PositionalField(initialPosition = 451, finalPosition = 455, decorator=VisualGlideSlopIndicatorsDecorator.class)
+	public Integer getReciprocalEndVisualGlideIndicator() {
+		return reciprocalEndVisualGlideIndicator;
+	}
+
+	public void setReciprocalEndVisualGlideIndicator(Integer reciprocalEndVisualGlideIndicator) {
+		this.reciprocalEndVisualGlideIndicator = reciprocalEndVisualGlideIndicator;
+	}
+
+	@PositionalField(initialPosition = 460, finalPosition = 467, decorator=ApproachLightSystemDecorator.class)
+	public Integer getReciprocalEndApproachLightSystem() {
+		return reciprocalEndApproachLightSystem;
+	}
+
+	public void setReciprocalEndApproachLightSystem(Integer reciprocalEndApproachLightSystem) {
+		this.reciprocalEndApproachLightSystem = reciprocalEndApproachLightSystem;
+	}
+
+	@PositionalField(initialPosition = 468, finalPosition = 468, decorator=BooleanDecorator.class)
+	public Boolean getReciprocalEndRunwayEndIdentifierLightsAvailable() {
+		return reciprocalEndRunwayEndIdentifierLightsAvailable;
+	}
+
+	public void setReciprocalEndRunwayEndIdentifierLightsAvailable(
+			Boolean reciprocalEndRunwayEndIdentifierLightsAvailable) {
+		this.reciprocalEndRunwayEndIdentifierLightsAvailable = reciprocalEndRunwayEndIdentifierLightsAvailable;
+	}
+
+	@PositionalField(initialPosition = 469, finalPosition = 469, decorator=BooleanDecorator.class)
+	public Boolean getReciprocalEndCenterlineLightsAvailable() {
+		return reciprocalEndCenterlineLightsAvailable;
+	}
+
+	public void setReciprocalEndCenterlineLightsAvailable(Boolean reciprocalEndCenterlineLightsAvailable) {
+		this.reciprocalEndCenterlineLightsAvailable = reciprocalEndCenterlineLightsAvailable;
+	}
+
+	@PositionalField(initialPosition = 470, finalPosition = 470, decorator=BooleanDecorator.class)
+	public Boolean getReciprocalEndRunwayEndIdentifierTouchdownLightsAvailable() {
+		return reciprocalEndRunwayEndIdentifierTouchdownLightsAvailable;
+	}
+
+	public void setReciprocalEndRunwayEndIdentifierTouchdownLightsAvailable(
+			Boolean reciprocalEndRunwayEndIdentifierTouchdownLightsAvailable) {
+		this.reciprocalEndRunwayEndIdentifierTouchdownLightsAvailable = reciprocalEndRunwayEndIdentifierTouchdownLightsAvailable;
+	}
+
 	public boolean isRunwayGeographyValid() {
 		return getBaseEndLatitude() != null &&
 				getBaseEndLongitude() != null &&
@@ -219,13 +353,13 @@ public class AirportRunway extends AirportBase {
 	}
 	
 	public boolean isHardSurfaced() {
-		return StringUtils.contains(getCondition(), "CONC") || StringUtils.contains(getCondition(), "ASPH");
+		return StringUtils.contains(getSurfaceTypeAndCondition(), "CONC") || StringUtils.contains(getSurfaceTypeAndCondition(), "ASPH");
 	}
-
+	
 	@Override
 	public String toString() {
 		return "AirportRunway [runwayIdentifier=" + runwayIdentifier + ", length=" + length + ", width=" + width
-				+ ", condition=" + condition + ", edgeLightIntensity=" + edgeLightIntensity + ", baseEndIdentifier="
+				+ ", baseEndIdentifier="
 				+ baseEndIdentifier + ", baseEndAlignment=" + baseEndAlignment + ", reciprocalEndIdentifier="
 				+ reciprocalEndIdentifier + ", reciprocalEndAlignment=" + reciprocalEndAlignment
 				+ ", baseEndLatitudeSeconds=" + baseEndLatitudeSeconds + ", baseEndLatitudeDeclination="
@@ -233,10 +367,193 @@ public class AirportRunway extends AirportBase {
 				+ ", baseEndLongitudeDeclination=" + baseEndLongitudeDeclination + ", reciprocalEndLatitudeSeconds="
 				+ reciprocalEndLatitudeSeconds + ", reciprocalEndLatitudeDeclination="
 				+ reciprocalEndLatitudeDeclination + ", reciprocalEndLongitudeSeconds=" + reciprocalEndLongitudeSeconds
-				+ ", reciprocalEndLongitudeDeclination=" + reciprocalEndLongitudeDeclination + ", getBaseEndLatitude()="
+				+ ", reciprocalEndLongitudeDeclination=" + reciprocalEndLongitudeDeclination
+				+ ", surfaceTypeAndCondition=" + surfaceTypeAndCondition + ", surfaceTreatment=" + surfaceTreatment
+				+ ", baseEndRightHandTrafficPattern=" + baseEndRightHandTrafficPattern
+				+ ", reciprocalEndRightHandTrafficPattern=" + reciprocalEndRightHandTrafficPattern
+				+ ", runwayLightIntensity=" + runwayLightIntensity + ", baseEndVisualGlideIndicator="
+				+ baseEndVisualGlideIndicator + ", baseEndApproachLightSystem=" + baseEndApproachLightSystem
+				+ ", baseEndRunwayEndIdentifierLightsAvailable=" + baseEndRunwayEndIdentifierLightsAvailable
+				+ ", baseEndCenterlineLightsAvailable=" + baseEndCenterlineLightsAvailable
+				+ ", baseEndRunwayEndIdentifierTouchdownLightsAvailable="
+				+ baseEndRunwayEndIdentifierTouchdownLightsAvailable + ", reciprocalEndVisualGlideIndicator="
+				+ reciprocalEndVisualGlideIndicator + ", reciprocalEndApproachLightSystem="
+				+ reciprocalEndApproachLightSystem + ", reciprocalEndRunwayEndIdentifierLightsAvailable="
+				+ reciprocalEndRunwayEndIdentifierLightsAvailable + ", reciprocalEndCenterlineLightsAvailable="
+				+ reciprocalEndCenterlineLightsAvailable + ", reciprocalEndRunwayEndIdentifierTouchdownLightsAvailable="
+				+ reciprocalEndRunwayEndIdentifierTouchdownLightsAvailable + ", getBaseEndLatitude()="
 				+ getBaseEndLatitude() + ", getBaseEndLongitude()=" + getBaseEndLongitude()
 				+ ", getReciprocalEndLatitude()=" + getReciprocalEndLatitude() + ", getReciprocalEndLongitude()="
-				+ getReciprocalEndLongitude() + "]";
+				+ getReciprocalEndLongitude() + ", isRunwayGeographyValid()=" + isRunwayGeographyValid()
+				+ ", isHardSurfaced()=" + isHardSurfaced() + "]";
 	}
+
+	public static enum RUNWAY_EDGE_LIGHT_INENSITY {
+		HIGH,
+		MEDIUM,
+		LOW,
+		NON_STANDARD,
+		NONE
+	}
+	
+	public static class RunwayEdgeLightIntensityDecorator extends DefaultFieldDecorator {
+        @Override
+        public Object fromString(String str) {
+        	switch(str) {
+        	case "HIGH":
+        		return Integer.valueOf(RUNWAY_EDGE_LIGHT_INENSITY.HIGH.ordinal());
+        	case "MED":
+        		return Integer.valueOf(RUNWAY_EDGE_LIGHT_INENSITY.MEDIUM.ordinal());
+        	case "LOW":
+        		return Integer.valueOf(RUNWAY_EDGE_LIGHT_INENSITY.LOW.ordinal());
+        	case "NSTD":
+        		return Integer.valueOf(RUNWAY_EDGE_LIGHT_INENSITY.NON_STANDARD.ordinal());
+        	default:
+        		return Integer.valueOf(RUNWAY_EDGE_LIGHT_INENSITY.NONE.ordinal());	
+        	}
+        }
+    }
+	
+	public static enum VISUAL_GLIDE_SLOPE_INDICATORS {
+		S2L,
+		S2R,
+		V2L,
+		V2R,
+		V4L,
+		V4R,
+		V6L,
+		V6R,
+		V12,
+		V16,
+		P2L,
+		P2R,
+		P4L,
+		P4R,
+		NSTD,
+		PVT,
+		VAS,
+		NONE,
+		N,
+		TRIL,
+		TRIR,
+		PSIL,
+		PSIR,
+		PNIL,
+		PNIR
+	}
+	
+	public static class VisualGlideSlopIndicatorsDecorator extends DefaultFieldDecorator {
+        @Override
+        public Object fromString(String str) {
+        	switch(str) {
+        	case "S2L":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.S2L.ordinal());
+        	case "S2R":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.S2R.ordinal());
+        	case "V2L":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V2L.ordinal());
+        	case "V2R":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V2R.ordinal());
+        	case "V4L":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V4L.ordinal());
+        	case "V4R":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V4R.ordinal());
+        	case "V6L":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V6L.ordinal());
+        	case "V6R":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V6R.ordinal());
+        	case "V12":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V12.ordinal());
+        	case "V16":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.V16.ordinal());
+        	case "P2L":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.P2L.ordinal());
+        	case "P2R":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.P2R.ordinal());
+        	case "P4L":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.P4L.ordinal());
+        	case "P4R":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.P4R.ordinal());
+        	case "NSTD":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.NSTD.ordinal());
+        	case "PVT":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.PVT.ordinal());
+        	case "VAS":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.VAS.ordinal());
+        	case "N":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.N.ordinal());
+        	case "TRIL":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.TRIL.ordinal());
+        	case "TRIR":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.TRIR.ordinal());
+        	case "PSIL":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.PSIL.ordinal());
+        	case "PSIR":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.PSIR.ordinal());
+        	case "PNIL":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.PNIL.ordinal());
+        	case "PNIR":
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.PNIR.ordinal());
+        	default:
+        		return Integer.valueOf(VISUAL_GLIDE_SLOPE_INDICATORS.NONE.ordinal());	
+        	}
+        }
+    }
+	
+	public static enum APPROACH_LIGHT_SYSTEM {
+		ALSAF,
+		ALSF1,
+		ALSF2,
+		MALS,
+		MALSF,
+		MALSR,
+		SSALS,
+		SSALF,
+		SSALR,
+		NEON,
+		ODALS,
+		RLLS,
+		MIL_OVRN,
+		NSTD,
+		NONE
+	}
+	
+	public static class ApproachLightSystemDecorator extends DefaultFieldDecorator {
+        @Override
+        public Object fromString(String str) {
+        	switch(str) {
+        	case "ALSAF":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.ALSAF.ordinal());
+        	case "ALSF1":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.ALSF1.ordinal());
+        	case "ALSF2":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.ALSF2.ordinal());
+        	case "MALS":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.MALS.ordinal());
+        	case "MALSF":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.MALSF.ordinal());
+        	case "MALSR":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.MALSR.ordinal());
+        	case "SSALS":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.SSALS.ordinal());
+        	case "SSALF":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.SSALF.ordinal());
+        	case "SSALR":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.SSALR.ordinal());
+        	case "NEON":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.NEON.ordinal());
+        	case "ODALS":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.ODALS.ordinal());
+        	case "RLLS":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.RLLS.ordinal());
+        	case "MIL OVRN":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.MIL_OVRN.ordinal());
+        	case "NSTD":
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.NSTD.ordinal());
+        	default:
+        		return Integer.valueOf(APPROACH_LIGHT_SYSTEM.NONE.ordinal());	
+        	}
+        }
+    }
 	
 }
